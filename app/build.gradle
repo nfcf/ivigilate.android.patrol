@@ -27,6 +27,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile 'ch.acra:acra:4.5.0'
     compile 'com.journeyapps:zxing-android-embedded:3.3.0'
-    releaseCompile project(path: ':com.ivigilate.android.library', configuration: 'release')
-    debugCompile project(path: ':com.ivigilate.android.library', configuration: 'debug')
+    compile project(':com.ivigilate.android.library')
 }

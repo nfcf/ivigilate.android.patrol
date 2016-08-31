@@ -1,8 +1,8 @@
-package com.ivigilate.android.app;
+package com.ivigilate.android.patrol;
 
 import android.app.Application;
 
-import com.ivigilate.android.app.utils.Logger;
+import com.ivigilate.android.patrol.utils.Logger;
 import com.ivigilate.android.library.IVigilateManager;
 
 import org.acra.ACRA;

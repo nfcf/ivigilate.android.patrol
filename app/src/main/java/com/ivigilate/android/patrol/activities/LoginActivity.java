@@ -1,12 +1,10 @@
-package com.ivigilate.android.app.activities;
+package com.ivigilate.android.patrol.activities;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.CursorLoader;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
@@ -31,11 +29,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.gson.JsonObject;
-import com.ivigilate.android.app.AppContext;
-import com.ivigilate.android.app.BuildConfig;
-import com.ivigilate.android.app.R;
-import com.ivigilate.android.app.interfaces.IProfileQuery;
-import com.ivigilate.android.app.utils.Logger;
+import com.ivigilate.android.patrol.AppContext;
+import com.ivigilate.android.patrol.BuildConfig;
+import com.ivigilate.android.patrol.R;
+import com.ivigilate.android.patrol.interfaces.IProfileQuery;
+import com.ivigilate.android.patrol.utils.Logger;
 import com.ivigilate.android.library.IVigilateManager;
 import com.ivigilate.android.library.classes.DeviceProvisioning;
 import com.ivigilate.android.library.classes.User;
@@ -258,7 +256,8 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
                 public void success(User user) {
                     showProgress(false);
                     if (user != null) {
-                        provisionDeviceIfWantedAndGotoMainActivity();
+                            provisionPhoneAsDetector();
+                            gotoMainActivity();
                     } else {
                         mPasswordView.setError(getString(R.string.error_incorrect_password));
                         mPasswordView.requestFocus();
@@ -278,47 +277,17 @@ public class LoginActivity extends BaseActivity implements LoaderCallbacks<Curso
         }
     }
 
-    private void provisionDeviceIfWantedAndGotoMainActivity() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Provision Detector");
-        builder.setMessage("Do you want to provision this phone on this user account?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                provisionPhoneAsDetector();
-                dialog.dismiss();
-                gotoMainActivity();
-            }
-        });
-
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                gotoMainActivity();
-            }
-        });
-
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
 
     private void provisionPhoneAsDetector() {
         runToastOnUIThread("Provisioning phone as detector...", false);
 
         JsonObject metadata = new JsonObject();
         JsonObject device = new JsonObject();
-        JsonObject contact_settings = new JsonObject();
+
         device.addProperty("model", PhoneUtils.getDeviceName());
-        contact_settings.addProperty("sosNumber","");
-        contact_settings.addProperty("number1","");
-        contact_settings.addProperty("number2","");
-        contact_settings.addProperty("nameCall1","");
-        contact_settings.addProperty("nameCall2","");
 
         metadata.add("device", device);
-        metadata.add("contact_settings", contact_settings);
 
         DeviceProvisioning deviceProvisioning = new DeviceProvisioning(DeviceProvisioning.DeviceType.DetectorMovable,
                 PhoneUtils.getDeviceUniqueId(this),

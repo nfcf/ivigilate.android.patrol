@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context="com.ivigilate.android.app.activities.MainActivity">
+    tools:context="com.ivigilate.android.patrol.activities.MainActivity">
 
     <LinearLayout
         android:id="@+id/panic_border_view"

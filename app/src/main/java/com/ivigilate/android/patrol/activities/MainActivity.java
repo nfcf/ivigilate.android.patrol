@@ -1,4 +1,4 @@
-package com.ivigilate.android.app.activities;
+package com.ivigilate.android.patrol.activities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,11 +26,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
-import com.ivigilate.android.app.AppContext;
-import com.ivigilate.android.app.R;
-import com.ivigilate.android.app.classes.SightingEx;
-import com.ivigilate.android.app.utils.Logger;
-import com.ivigilate.android.app.utils.SMSUtils;
+import com.ivigilate.android.patrol.AppContext;
+import com.ivigilate.android.patrol.R;
+import com.ivigilate.android.patrol.classes.SightingEx;
+import com.ivigilate.android.patrol.utils.Logger;
+import com.ivigilate.android.patrol.utils.SMSUtils;
 import com.ivigilate.android.library.IVigilateManager;
 import com.ivigilate.android.library.classes.DeviceProvisioning;
 import com.ivigilate.android.library.classes.GPSLocation;
@@ -291,8 +291,8 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 vibrate.vibrate(250);
-                if (firstNumber.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Invalid Number", Toast.LENGTH_SHORT).show();
+                if (StringUtils.isNullOrBlank("firstNumber")) {
+                    Toast.makeText(getApplicationContext(), "Number not configured!", Toast.LENGTH_SHORT).show();
                 } else {
                     callIntent.setData(Uri.parse("tel: " + firstNumber));
                     startActivity(callIntent);
@@ -304,8 +304,8 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 vibrate.vibrate(250);
-                if (secondNumber.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Invalid Number", Toast.LENGTH_SHORT).show();
+                if (StringUtils.isNullOrBlank("secondNumber")) {
+                    Toast.makeText(getApplicationContext(), "Number not configured!", Toast.LENGTH_SHORT).show();
                 } else {
                     callIntent.setData(Uri.parse("tel: " + secondNumber));
                     startActivity(callIntent);
@@ -366,12 +366,15 @@ public class MainActivity extends BaseActivity {
             return;
         }
         JsonObject metadata = mRegisteredDevice.getMetadata();
-        JsonObject contactSettings = metadata.getAsJsonObject("contact_settings");
-        sosNumber = contactSettings.get("sosNumber").getAsString();
-        firstNumber = contactSettings.get("number1").getAsString();
-        secondNumber = contactSettings.get("number2").getAsString();
-        nameCall1 = contactSettings.get("nameCall1").getAsString();
-        nameCall2 = contactSettings.get("nameCall2").getAsString();
+
+        if(metadata.getAsJsonObject("contact_settings")!= null){
+            JsonObject contactSettings = metadata.getAsJsonObject("contact_settings");
+            sosNumber = contactSettings.get("sos_number")!= null ? contactSettings.get("sos_number").getAsString() : "";
+            firstNumber = contactSettings.get("number1")!= null ? contactSettings.get("number1").getAsString() : "";
+            secondNumber = contactSettings.get("number2")!= null ? contactSettings.get("number2").getAsString() : "";
+            nameCall1 = contactSettings.get("name_call1")!= null ? contactSettings.get("name_call1").getAsString() : "";
+            nameCall2 = contactSettings.get("name_call2")!= null ? contactSettings.get("name_call2").getAsString() : "";
+        }
     }
 
     public void setButtonsNames() {

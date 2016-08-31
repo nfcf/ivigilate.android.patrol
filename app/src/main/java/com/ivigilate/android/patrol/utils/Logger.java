@@ -1,4 +1,4 @@
-package com.ivigilate.android.app.utils;
+package com.ivigilate.android.patrol.utils;
 
 import android.util.Log;
 

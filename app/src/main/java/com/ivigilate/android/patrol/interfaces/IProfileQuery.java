@@ -1,4 +1,4 @@
-package com.ivigilate.android.app.interfaces;
+package com.ivigilate.android.patrol.interfaces;
 
 import android.provider.ContactsContract;
 

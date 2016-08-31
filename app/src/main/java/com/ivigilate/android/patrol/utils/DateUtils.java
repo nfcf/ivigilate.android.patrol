@@ -1,4 +1,4 @@
-package com.ivigilate.android.app.utils;
+package com.ivigilate.android.patrol.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,7 +1,5 @@
-package com.ivigilate.android.app.utils;
+package com.ivigilate.android.patrol.utils;
 import android.telephony.SmsManager;
-
-import com.ivigilate.android.library.utils.StringUtils;
 
 public class SMSUtils {
 

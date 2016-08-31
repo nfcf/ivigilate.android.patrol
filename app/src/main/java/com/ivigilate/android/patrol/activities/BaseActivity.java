@@ -1,4 +1,4 @@
-package com.ivigilate.android.app.activities;
+package com.ivigilate.android.patrol.activities;
 
 
 import android.Manifest;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.ivigilate.android.app.utils.Logger;
+import com.ivigilate.android.patrol.utils.Logger;
 
 public class BaseActivity extends Activity {
     private static final int PERMISSIONS_REQUEST = 1;

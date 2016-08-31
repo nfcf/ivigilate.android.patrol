@@ -1,4 +1,4 @@
-package com.ivigilate.android.app.activities;
+package com.ivigilate.android.patrol.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.ivigilate.android.app.R;
+import com.ivigilate.android.patrol.R;
 import com.ivigilate.android.library.IVigilateManager;
 
 public class SplashActivity extends Activity {

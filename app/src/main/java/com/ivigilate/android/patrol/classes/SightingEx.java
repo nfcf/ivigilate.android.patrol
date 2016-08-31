@@ -1,4 +1,4 @@
-package com.ivigilate.android.app.classes;
+package com.ivigilate.android.patrol.classes;
 
 import com.ivigilate.android.library.classes.BleDeviceSighting;
 import com.ivigilate.android.library.classes.Sighting;

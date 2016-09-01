@@ -65,122 +65,134 @@
 
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="fill_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:paddingTop="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingRight="3dp"
+                            android:text="1."
+                            android:textColor="@color/white"
+                            android:textSize="25dp" />
+
+                        <ImageButton
+                            android:id="@+id/speeddial1_btn"
+                            android:layout_width="95dp"
+                            android:layout_height="95dp"
+                            android:layout_gravity="center_horizontal|top"
+                            android:layout_marginRight="40dp"
+                            android:background="@drawable/transparent_small_rounded_btn"
+                            android:maxHeight="95dp"
+                            android:maxWidth="95dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/phone_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15dp"
+                            android:paddingRight="3dp"
+                            android:text="2."
+                            android:textColor="@color/white"
+                            android:textSize="25dp" />
+
+                        <ImageButton
+                            android:id="@+id/speeddial2_btn"
+                            android:layout_width="95dp"
+                            android:layout_height="95dp"
+                            android:layout_gravity="center_horizontal|top"
+                            android:background="@drawable/transparent_small_rounded_btn"
+                            android:maxHeight="95dp"
+                            android:maxWidth="95dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/phone_icon" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/nameCall1"
+                            android:layout_width="143dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/names_box"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/nameCall2"
+                            android:layout_width="143dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/names_box"
+                            android:textColor="@color/white"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingTop="10dp">
+                android:layout_alignParentBottom="true"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingTop="15dp">
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:text="Guard Mode"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingRight="3dp"
-                        android:text="1."
-                        android:textColor="@color/white"
-                        android:textSize="25dp" />
+                <ToggleButton
+                    android:id="@+id/togglebutton"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp" />
 
-                    <ImageButton
-                        android:id="@+id/speeddial1_btn"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="center_horizontal|top"
-                        android:layout_marginRight="40dp"
-                        android:background="@drawable/transparent_small_rounded_btn"
-                        android:maxHeight="95dp"
-                        android:maxWidth="95dp"
-                        android:src="@drawable/phone_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="15dp"
-                        android:paddingRight="3dp"
-                        android:text="2."
-                        android:textColor="@color/white"
-                        android:textSize="25dp" />
-
-                    <ImageButton
-                        android:id="@+id/speeddial2_btn"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_gravity="center_horizontal|top"
-                        android:background="@drawable/transparent_small_rounded_btn"
-                        android:maxHeight="95dp"
-                        android:maxWidth="95dp"
-                        android:src="@drawable/phone_icon" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/nameCall1"
-                        android:layout_width="143dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/names_box"
-                        android:text=""
-                        android:textColor="@color/white"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/nameCall2"
-                        android:layout_width="143dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/names_box"
-                        android:textColor="@color/white"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
             </LinearLayout>
-        </ScrollView>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:text="Guard Mode"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-
-            <Switch
-                android:id="@+id/togglebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp" />
-
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

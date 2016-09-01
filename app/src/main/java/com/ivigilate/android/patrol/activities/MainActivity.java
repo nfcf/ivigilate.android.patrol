@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.gson.JsonObject;
 import com.ivigilate.android.patrol.AppContext;
@@ -107,12 +108,12 @@ public class MainActivity extends BaseActivity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
+                                            vibrate.vibrate(2000);
                                             mPanicMode = true;
                                             setUpPanicView();
                                             mAlertDialog = createPanicModeDialog();
                                             mAlertDialog.show();
                                             mCountDownTimer.start();
-                                            activateSosProcedure(vibrate, callIntent);
                                         }
                                     });
                                 }
@@ -313,16 +314,16 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        final Switch guardModeSwitch = (Switch) findViewById(R.id.togglebutton);
-        guardModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ToggleButton guardModeToggle = (ToggleButton) findViewById(R.id.togglebutton);
+        guardModeToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     getIVigilateManager().setLocationRequestInterval(60 * 1000);
-                    restartService(getApplicationContext());
                 }else{
                     getIVigilateManager().setLocationRequestInterval(600 * 1000);
                 }
+                restartService(getApplicationContext());
                 mGuardTourMode = isChecked;
                 JsonObject sighting_metadata = getIVigilateManager().getServiceSightingMetadata();
                 sighting_metadata.remove("guardTourMode");
@@ -446,7 +447,6 @@ public class MainActivity extends BaseActivity {
             public void onTick(long millisUntilFinished) {
                 String remainingSeconds = "" + millisUntilFinished / 1000;
                 panicDialogText.setText(remainingSeconds);
-                vibrate.vibrate(2000);
             }
 
             public void onFinish() {

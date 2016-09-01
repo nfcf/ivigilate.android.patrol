@@ -25,6 +25,7 @@ public class BaseActivity extends Activity {
     private static final int PERMISSIONS_REQUEST = 1;
     private static final int REQUEST_CODE = 1;
 
+
     protected void runToastOnUIThread(final String toastText, final boolean isLong) {
         this.runOnUiThread(new Runnable() {
             @Override
@@ -77,7 +78,10 @@ public class BaseActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.READ_PHONE_STATE,
-                            Manifest.permission.READ_CONTACTS},
+                            Manifest.permission.READ_CONTACTS,
+                            Manifest.permission.SEND_SMS,
+                            Manifest.permission.CALL_PHONE,
+                            Manifest.permission.VIBRATE},
                     PERMISSIONS_REQUEST);
         }
     }
@@ -115,6 +119,7 @@ public class BaseActivity extends Activity {
             }
         }
     }
+
     protected void showMobileDataErrorDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("No connection")
